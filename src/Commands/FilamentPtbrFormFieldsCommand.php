@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandrocfe\FilamentPtbrFormFields\Commands;
+namespace Jozenetoz\FilamentPtbrFormFields\Commands;
 
 use Illuminate\Console\Command;
 

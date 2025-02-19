@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandrocfe\FilamentPtbrFormFields;
+namespace Jozenetoz\FilamentPtbrFormFields;
 
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Component;
@@ -13,49 +13,53 @@ use Livewire\Component as Livewire;
 
 class Cep extends TextInput
 {
-    public function viaCep(string $mode = 'suffix', string $errorMessage = 'CEP inválido.', array $setFields = []): static
+    public function brasilApi(string $mode = 'suffix', string $errorMessage = 'CEP inválido.', array $setFields = []): static
     {
-        $viaCepRequest = function ($state, $livewire, $set, $component, $errorMessage, array $setFields) {
-
+        $brasilApiRequest = function ($state, $livewire, $set, $component, $errorMessage, array $setFields) {
             $livewire->validateOnly($component->getKey());
 
-            $request = Http::get(config('filament-ptbr-form-fields.viacep_url').$state.'/json/')->json();
+            $request = Http::get(config('filament-ptbr-form-fields.brasil_api.cep.url') . $state)->json();
 
-            foreach ($setFields as $key => $value) {
-                $set($key, $request[$value] ?? null);
-            }
-
-            if (blank($request) || Arr::has($request, 'erro')) {
+            if (
+                blank($request) ||
+                Arr::has($request, 'erro') ||
+                (isset($request['name']) && $request['name'] === 'CepPromiseError')
+            ) {
+                $msg = Arr::get($request, 'errors.0.message', Arr::get($request, 'message', $errorMessage));
                 throw ValidationException::withMessages([
-                    $component->getKey() => $errorMessage,
+                    $component->getKey() => $msg,
                 ]);
+            }
+            
+            foreach ($setFields as $key => $value) {
+                $set($key, Arr::get($request, $value));
             }
         };
 
         $this
             ->minLength(9)
             ->mask('99999-999')
-            ->afterStateUpdated(function ($state, Livewire $livewire, Set $set, Component $component) use ($errorMessage, $setFields, $viaCepRequest) {
-                $viaCepRequest($state, $livewire, $set, $component, $errorMessage, $setFields);
+            ->afterStateUpdated(function ($state, Livewire $livewire, Set $set, Component $component) use ($errorMessage, $setFields, $brasilApiRequest) {
+                $brasilApiRequest($state, $livewire, $set, $component, $errorMessage, $setFields);
             })
-            ->suffixAction(function () use ($mode, $errorMessage, $setFields, $viaCepRequest) {
+            ->suffixAction(function () use ($mode, $errorMessage, $setFields, $brasilApiRequest) {
                 if ($mode === 'suffix') {
                     return Action::make('search-action')
                         ->label('Buscar CEP')
                         ->icon('heroicon-o-magnifying-glass')
-                        ->action(function ($state, Livewire $livewire, Set $set, Component $component) use ($errorMessage, $setFields, $viaCepRequest) {
-                            $viaCepRequest($state, $livewire, $set, $component, $errorMessage, $setFields);
+                        ->action(function ($state, Livewire $livewire, Set $set, Component $component) use ($errorMessage, $setFields, $brasilApiRequest) {
+                            $brasilApiRequest($state, $livewire, $set, $component, $errorMessage, $setFields);
                         })
                         ->cancelParentActions();
                 }
             })
-            ->prefixAction(function () use ($mode, $errorMessage, $setFields, $viaCepRequest) {
+            ->prefixAction(function () use ($mode, $errorMessage, $setFields, $brasilApiRequest) {
                 if ($mode === 'prefix') {
                     return Action::make('search-action')
                         ->label('Buscar CEP')
                         ->icon('heroicon-o-magnifying-glass')
-                        ->action(function ($state, Livewire $livewire, Set $set, Component $component) use ($errorMessage, $setFields, $viaCepRequest) {
-                            $viaCepRequest($state, $livewire, $set, $component, $errorMessage, $setFields);
+                        ->action(function ($state, Livewire $livewire, Set $set, Component $component) use ($errorMessage, $setFields, $brasilApiRequest) {
+                            $brasilApiRequest($state, $livewire, $set, $component, $errorMessage, $setFields);
                         })
                         ->cancelParentActions();
                 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Leandrocfe\FilamentPtbrFormFields;
+namespace Jozenetoz\FilamentPtbrFormFields;
 
 use ArchTech\Money\Currency;
 use Closure;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
-use Leandrocfe\FilamentPtbrFormFields\Currencies\BRL;
+use Jozenetoz\FilamentPtbrFormFields\Currencies\BRL;
 
 class Money extends TextInput
 {

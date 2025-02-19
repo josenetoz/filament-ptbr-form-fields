@@ -11,10 +11,8 @@ This package uses [LaravelLegends/pt-br-validator](https://github.com/LaravelLeg
 You can install the package via Composer:
 
 ```bash
-composer require leandrocfe/filament-ptbr-form-fields:"^3.0"
+composer require jozenetoz/filament-ptbr-form-fields:"^1.0"
 ```
-
-### Filament V2 - if you are using Filament v2.x, you can use [this section](https://github.com/leandrocfe/filament-ptbr-form-fields/tree/2.0.0)
 
 ## Usage
 
@@ -23,7 +21,7 @@ composer require leandrocfe/filament-ptbr-form-fields:"^3.0"
 To create a dynamic input that accepts either CPF or CNPJ, use:
 
 ```php
-use Leandrocfe\FilamentPtbrFormFields\Document;
+use Jozenetoz\FilamentPtbrFormFields\Document;
 //CPF or CNPJ
 Document::make('cpf_or_cnpj')
     ->dynamic()
@@ -77,7 +75,7 @@ Document::make('cpf')
 To create a dynamic input that formats phone numbers with DDD, use:
 
 ```php
-use Leandrocfe\FilamentPtbrFormFields\PhoneNumber;
+use Jozenetoz\FilamentPtbrFormFields\PhoneNumber;
 PhoneNumber::make('phone_number')
 ```
 
@@ -98,7 +96,7 @@ PhoneNumber::make('phone_number')
 To create a money input field, use the following syntax:
 
 ```php
-use Leandrocfe\FilamentPtbrFormFields\Money;
+use Jozenetoz\FilamentPtbrFormFields\Money;
 Money::make('price')
     ->default('100,00')
 
@@ -112,7 +110,7 @@ This is suitable for use with `decimal` or `float` data types.
 If you prefer to work with integer values, you can format the money input using the `intFormat()` method:
 
 ```php
-use Leandrocfe\FilamentPtbrFormFields\Money;
+use Jozenetoz\FilamentPtbrFormFields\Money;
 Money::make('price')
     ->default(10000)
     ->intFormat()
@@ -124,7 +122,7 @@ Money::make('price')
 To retrieve the raw state of the field, you can use the `dehydratedMask() method:
 
 ```php
-use Leandrocfe\FilamentPtbrFormFields\Money;
+use Jozenetoz\FilamentPtbrFormFields\Money;
 Money::make('price')
     ->default('100,00')
     ->dehydrateMask()
@@ -143,7 +141,7 @@ This package leverages the `archtechx/money` package under the hood. By default,
 
 If you want to switch to the `USD` (United States Dollar) format, you can do so with the following code:
 ```php
-use Leandrocfe\FilamentPtbrFormFields\Currencies\USD;
+use Jozenetoz\FilamentPtbrFormFields\Currencies\USD;
 
 Money::make('price')
     ->currency(USD::class)
@@ -233,7 +231,7 @@ Money::make('price')
 To integrate with the ViaCep API for CEP validation and address autofill, use:
 
 ```php
-use Leandrocfe\FilamentPtbrFormFields\Cep;
+use Jozenetoz\FilamentPtbrFormFields\Cep;
 use Filament\Forms\Components\TextInput;
 Cep::make('postal_code')
     ->viaCep(
@@ -278,10 +276,6 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within this package, please send an e-mail to <leandrocfe@gmail.com>.
 
 ## Credits
 

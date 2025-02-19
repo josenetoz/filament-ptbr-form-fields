@@ -1,22 +1,27 @@
 {
-    "name": "leandrocfe/filament-ptbr-form-fields",
+    "name": "jozenetoz/filament-ptbr-form-fields",
     "description": "Brazilian pt-BR form fields.",
     "keywords": [
-        "leandrocfe",
+        "jozenetoz",
         "laravel",
         "filament-ptbr-form-fields"
     ],
-    "homepage": "https://github.com/leandrocfe/filament-ptbr-form-fields",
+    "homepage": "https://github.com/jozenetoz/filament-ptbr-form-fields",
     "license": "MIT",
     "authors": [
         {
             "name": "Leandro Costa Ferreira",
             "email": "leandrocfe@gmail.com",
             "role": "Developer"
+        },
+        {
+            "name": "José Neto",
+            "email": "jose.radar@hotmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.1 || ^8.2 || ^8.3",
+        "php": "^8.1 || ^8.2 || ^8.3 || ^8.4",
         "archtechx/money": "^0.5.1",
         "filament/filament": "^3.0",
         "illuminate/contracts": "^10.0 || ^11.0",
@@ -38,13 +43,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Leandrocfe\\FilamentPtbrFormFields\\": "src/",
-            "Leandrocfe\\FilamentPtbrFormFields\\Database\\Factories\\": "database/factories/"
+            "Jozenetoz\\FilamentPtbrFormFields\\": "src/",
+            "Jozenetoz\\FilamentPtbrFormFields\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Leandrocfe\\FilamentPtbrFormFields\\Tests\\": "tests/"
+            "Jozenetoz\\FilamentPtbrFormFields\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -64,10 +69,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Leandrocfe\\FilamentPtbrFormFields\\FilamentPtbrFormFieldsServiceProvider"
+                "Jozenetoz\\FilamentPtbrFormFields\\FilamentPtbrFormFieldsServiceProvider"
             ],
             "aliases": {
-                "FilamentPtbrFormFields": "Leandrocfe\\FilamentPtbrFormFields\\Facades\\FilamentPtbrFormFields"
+                "FilamentPtbrFormFields": "Jozenetoz\\FilamentPtbrFormFields\\Facades\\FilamentPtbrFormFields"
             }
         }
     },

@@ -1,5 +1,5 @@
 <?php
 
-namespace Leandrocfe\FilamentPtbrFormFields;
+namespace Jozenetoz\FilamentPtbrFormFields;
 
 class FilamentPtbrFormFields {}

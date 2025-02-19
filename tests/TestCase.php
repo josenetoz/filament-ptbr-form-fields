@@ -1,9 +1,9 @@
 <?php
 
-namespace Leandrocfe\FilamentPtbrFormFields\Tests;
+namespace Jozenetoz\FilamentPtbrFormFields\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Leandrocfe\FilamentPtbrFormFields\FilamentPtbrFormFieldsServiceProvider;
+use Jozenetoz\FilamentPtbrFormFields\FilamentPtbrFormFieldsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Leandrocfe\\FilamentPtbrFormFields\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Jozenetoz\\FilamentPtbrFormFields\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

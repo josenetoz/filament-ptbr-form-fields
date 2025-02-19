@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandrocfe\FilamentPtbrFormFields;
+namespace Jozenetoz\FilamentPtbrFormFields;
 
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Component;

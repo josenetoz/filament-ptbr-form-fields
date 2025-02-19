@@ -1,6 +1,6 @@
 <?php
 
-namespace Leandrocfe\FilamentPtbrFormFields;
+namespace Jozenetoz\FilamentPtbrFormFields;
 
 use Closure;
 use Filament\Forms\Components\TextInput;

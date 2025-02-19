@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Leandrocfe\FilamentPtbrFormFields\Currencies;
+namespace Jozenetoz\FilamentPtbrFormFields\Currencies;
 
 use ArchTech\Money\Currency;
 
